@@ -1,0 +1,51 @@
+# [보안] 내 소중한 비밀 주소록 숨기기
+.env
+.env.sample
+
+# Miscellaneous (기타 잡동사니)
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ / Android Studio 관련
+*.iml
+*.ipr
+*.iws
+.idea/
+.gradle/
+local.properties  # [보안] 안드로이드 로컬 설정 파일
+
+# Flutter/Dart 관련
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# [추가] iOS/macOS 관련 개인 설정
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Runner/GeneratedConfig.xcconfig
+
+# Symbolication / Obfuscation 관련
+app.*.symbols
+app.*.map.json
+
+# Android 빌드 결과물
+/android/app/debug
+/android/app/profile
+/android/app/release
