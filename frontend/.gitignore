@@ -1,6 +1,5 @@
 # [보안] 내 소중한 비밀 주소록 숨기기
 .env
-.env.sample
 
 # Miscellaneous (기타 잡동사니)
 *.class
