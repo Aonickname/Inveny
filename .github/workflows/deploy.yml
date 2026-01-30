@@ -42,5 +42,6 @@ jobs:
         script: |
           sudo pkill -f 'java -jar' || true
           sleep 3
-          nohup java -jar /home/ubuntu/app/libs/*SNAPSHOT.jar > /home/ubuntu/app.log 2>&1 &
-          sleep 5
+          nohup java -jar /home/ubuntu/app/libs/*SNAPSHOT.jar > /home/ubuntu/app.log 2>&1 < /dev/null &
+          disown
+          exit 0
