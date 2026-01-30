@@ -17,7 +17,6 @@ class Stock {
     this.memo
     });
 
-  // 1. 서버나 DB에서 받은 데이터를 붕어빵 틀(객체)에 넣기
   factory Stock.fromJson(Map<String, dynamic> json) {
     return Stock(
       id: json['id'],
@@ -30,7 +29,6 @@ class Stock {
     );
   }
 
-  // 2. 붕어빵(객체)을 다시 데이터베이스에 저장하기 좋게 맵(Map)으로 바꾸기
   Map<String, dynamic> toMap() {
     return {
       'id': id,

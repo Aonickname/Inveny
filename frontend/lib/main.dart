@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/stock_list_screen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'screens/login_screen.dart';
 
 void main() async{
 
@@ -30,7 +31,7 @@ class InvenyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: const StockListScreen(), 
+      home: const LoginScreen(), 
     );
   }
 }
