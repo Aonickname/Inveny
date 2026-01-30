@@ -1,0 +1,40 @@
+name: Java CI with Gradle and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest 
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 21 
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    - name: Build with Gradle 
+      run: ./gradlew build
+
+    - name: Transfer to Server 
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.SERVER_HOST }} 
+        username: ${{ secrets.SERVER_USER }} 
+        key: ${{ secrets.SERVER_KEY }}
+        source: "build/libs/*.jar"
+        target: "/home/ubuntu/app"
+
+    - name: Execute Server 
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_KEY }}
+        script: |
+          sudo pkill -f 'java -jar' || true
+          nohup java -jar /home/ubuntu/app/build/libs/*.jar > app.log 2>&1 &
