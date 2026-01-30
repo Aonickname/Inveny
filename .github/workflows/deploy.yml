@@ -19,9 +19,9 @@ jobs:
 
     - name: Build with Gradle 
       run: |
-	cd backend
-	chmod +x gradlew
-	./gradlew build
+        cd backend
+        chmod +x gradlew
+        ./gradlew build
 
     - name: Transfer to Server 
       uses: appleboy/scp-action@v0.1.7
@@ -31,7 +31,7 @@ jobs:
         key: ${{ secrets.SERVER_KEY }}
         source: "backend/build/libs/*.jar"
         target: "/home/ubuntu/app"
-	strip_components: 2
+        strip_components: 2
 
     - name: Execute Server 
       uses: appleboy/ssh-action@v1.0.3
