@@ -29,7 +29,7 @@ jobs:
         host: ${{ secrets.SERVER_HOST }} 
         username: ${{ secrets.SERVER_USER }} 
         key: ${{ secrets.SERVER_KEY }}
-        source: "backend/build/libs/*.jar"
+        source: "backend/build/libs/*SNAPSHOT.jar"
         target: "/home/ubuntu/app"
         strip_components: 2
 
@@ -41,5 +41,6 @@ jobs:
         key: ${{ secrets.SERVER_KEY }}
         script: |
           sudo pkill -f 'java -jar' || true
-          nohup java -jar /home/ubuntu/app/libs/*.jar > app.log 2>&1 &
-          sleep 2
+          sleep 3
+          nohup java -jar /home/ubuntu/app/libs/*SNAPSHOT.jar > /home/ubuntu/app.log 2>&1 &
+          sleep 5
