@@ -12,7 +12,6 @@ class StockDetailScreen extends StatefulWidget {
 
 class _StockDetailScreenState extends State<StockDetailScreen> {
   late int currentQuantity;
-  // 이름 수정을 위해 컨트롤러를 추가해요.
   late TextEditingController nameController;
 
   @override
@@ -22,7 +21,6 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
     nameController = TextEditingController(text: widget.stock.name);
   }
 
-  // 1. 삭제를 정말 할 것인지 물어보는 팝업창이에요.
   void _showDeleteDialog() {
     showDialog(
       context: context,
@@ -31,7 +29,7 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
         content: Text('${widget.stock.name}을(를) 정말 삭제하시겠습니까?'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context), // 취소하면 창만 닫아요.
+            onPressed: () => Navigator.pop(context),
             child: const Text('취소'),
           ),
           TextButton(
@@ -63,7 +61,6 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
       appBar: AppBar(
         title: const Text('재고 상세 관리'),
         actions: [
-          // 3. 우측 상단에 삭제 아이콘을 달아줘요.
           IconButton(
             icon: const Icon(Icons.delete_outline, color: Colors.red),
             onPressed: _showDeleteDialog,
@@ -76,7 +73,6 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              // 이름을 수정할 수 있게 TextField로 바꿔보세요!
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: TextField(
@@ -121,7 +117,6 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
                 ),
                 onPressed: () async {
                   try {
-                    // 수정 시에는 이름과 수량을 함께 보내요.
                     await StockService().updateStock(
                       widget.stock.id ?? 0, 
                       nameController.text, 

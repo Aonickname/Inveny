@@ -4,10 +4,14 @@ import '../models/stock.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class StockService {
-  final String baseUrl = dotenv.env['BASE_URL'] ?? "주소 찾지 못했어요";
+  final String baseUrl = (dotenv.env['BASE_URL'] ?? "주소 찾지 못했어요") + "/stocks";
+
+
 
   Future<List<Stock>> fetchStocks() async {
-    final response = await http.get(Uri.parse('$baseUrl/stocks'));
+    final response = await http.get(Uri.parse(baseUrl));
+
+
     
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(utf8.decode(response.bodyBytes));
@@ -27,7 +31,7 @@ class StockService {
 
   Future<void> updateStock(int id, String name, String category, int quantity) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/stocks/$id'),
+      Uri.parse('$baseUrl/$id'),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
         "name": name,

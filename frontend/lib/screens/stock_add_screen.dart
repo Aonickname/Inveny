@@ -13,7 +13,6 @@ class _StockAddScreenState extends State<StockAddScreen> {
   final quantityController = TextEditingController();
   final memoController = TextEditingController();
   
-  // 1. 직접 입력을 위한 컨트롤러를 추가해요.
   final customCategoryController = TextEditingController();
   final customUnitController = TextEditingController();
 
@@ -22,7 +21,6 @@ class _StockAddScreenState extends State<StockAddScreen> {
   String? selectedLocation;
 
   final List<String> categories = ['채소류', '기본 재료', '토핑', '소스', '음료', '기타'];
-  // 2. 단위 목록에도 '기타'를 추가했어요.
   final List<String> units = ['박스', '단', '개', '기타']; 
   final List<String> locations = ['주방', '홀', '비품'];
 
@@ -42,14 +40,12 @@ class _StockAddScreenState extends State<StockAddScreen> {
               ),
               const SizedBox(height: 20),
 
-              // 카테고리 선택
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: '카테고리 선택'),
                 initialValue: selectedCategory,
                 items: categories.map((v) => DropdownMenuItem(value: v, child: Text(v))).toList(),
                 onChanged: (val) => setState(() => selectedCategory = val),
               ),
-              // 3. '기타'를 선택했을 때만 나타나는 입력창
               if (selectedCategory == '기타') ...[
                 const SizedBox(height: 10),
                 TextField(
@@ -59,7 +55,6 @@ class _StockAddScreenState extends State<StockAddScreen> {
               ],
               const SizedBox(height: 20),
 
-              // 구역 선택 (수정 없음)
               DropdownButtonFormField<String>(
                 decoration: const InputDecoration(labelText: '보관 구역 (주방/홀/비품)'),
                 initialValue: selectedLocation,
@@ -94,7 +89,6 @@ class _StockAddScreenState extends State<StockAddScreen> {
                   ),
                 ],
               ),
-              // 4. 단위 '기타' 입력창
               if (selectedUnit == '기타') ...[
                 const SizedBox(height: 10),
                 TextField(
@@ -122,15 +116,14 @@ class _StockAddScreenState extends State<StockAddScreen> {
                     return;
                   }
 
-                  // 5. 최종적으로 서버에 보낼 값을 결정해요.
                   String finalCategory = (selectedCategory == '기타') ? customCategoryController.text : selectedCategory!;
                   String finalUnit = (selectedUnit == '기타') ? customUnitController.text : selectedUnit!;
 
                   await StockService().createStock(
                     nameController.text,
                     int.parse(quantityController.text),
-                    finalUnit, // 고른 것 혹은 직접 적은 것
-                    finalCategory, // 고른 것 혹은 직접 적은 것
+                    finalUnit, 
+                    finalCategory, 
                     selectedLocation!,
                     memoController.text,
                   );

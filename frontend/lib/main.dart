@@ -32,6 +32,7 @@ class InvenyApp extends StatelessWidget {
       ),
 
       home: const LoginScreen(), 
+      // home: const StockListScreen(), 
     );
   }
 }

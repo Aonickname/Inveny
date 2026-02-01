@@ -5,7 +5,6 @@ import '../widgets/stock_card.dart';
 import 'stock_detail_screen.dart'; 
 import 'stock_add_screen.dart'; 
 
-// 1. 정렬 기준을 정의해요 (열거형)
 enum SortOption { name, quantityAsc, quantityDesc }
 
 class StockListScreen extends StatefulWidget {
@@ -18,7 +17,6 @@ class StockListScreen extends StatefulWidget {
 class _StockListScreenState extends State<StockListScreen> {
   final StockService stockService = StockService();
   
-  // 2. 현재 선택된 정렬 기준을 저장하는 변수예요. (기본값: 이름순)
   SortOption _currentSort = SortOption.name;
 
   @override
@@ -28,13 +26,12 @@ class _StockListScreenState extends State<StockListScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('재고 목록 보기'),
-          // 3. 앱바 우측에 정렬 메뉴 버튼을 추가해요.
           actions: [
             PopupMenuButton<SortOption>(
               icon: const Icon(Icons.sort),
               onSelected: (SortOption result) {
                 setState(() {
-                  _currentSort = result; // 사용자가 선택한 기준으로 바꿔요.
+                  _currentSort = result; 
                 });
               },
               itemBuilder: (BuildContext context) => <PopupMenuEntry<SortOption>>[
