@@ -20,7 +20,7 @@ jobs:
         key: ${{ secrets.SERVER_KEY }}
         script: |
 
-          sudo pkill -9 -f 'java -jar.*Inveny' || true
+          sudo pkill -9 -f '[j]ava -jar.*Inveny' || true
           sleep 5
 
     - name: Set up JDK 21 
