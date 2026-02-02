@@ -53,6 +53,6 @@ jobs:
         key: ${{ secrets.SERVER_KEY }}
         script: |
 
-          nohup java -Xmx512M -jar /home/ubuntu/app/libs/*SNAPSHOT.jar > /home/ubuntu/app.log 2>&1 < /dev/null &
+          nohup java -Xmx512M -Dspring.profiles.active=prod -jar /home/ubuntu/app/libs/*SNAPSHOT.jar > /home/ubuntu/app.log 2>&1 < /dev/null &
           disown
           exit 0
