@@ -19,9 +19,15 @@ public class UserController {
         this.userService = userService;
     }
 
+    // 로그인
     @PostMapping("/login")
     public User login(@RequestBody User user) {
         return userService.login(user.getLoginId(), user.getPassword());
     }
 
+    // 회원가입
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userService.register(user.getLoginId(), user.getPassword());
+    }
 }

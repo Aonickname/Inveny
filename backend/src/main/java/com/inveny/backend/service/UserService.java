@@ -14,6 +14,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    //로그인
     public User login(String loginId, String password) {
 
         java.util.Optional<User> userBox = userRepository.findByLoginId(loginId);
@@ -32,6 +33,22 @@ public class UserService {
         }
 
         return user;
+    }
+
+    //회원가입
+    public User register(String loginId, String password) {
+
+        java.util.Optional<User> userBox = userRepository.findByLoginId(loginId);
+
+        if (!userBox.isEmpty()) {
+            throw new RuntimeException("이미 존재하는 아이디입니다.");
+        }
+
+        User user = new User();
+        user.setLoginId(loginId);
+        user.setPassword(password);
+
+        return userRepository.save(user);
     }
 
 }
