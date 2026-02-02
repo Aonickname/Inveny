@@ -26,6 +26,8 @@ class _StockListScreenState extends State<StockListScreen> {
       length: 3,
       child: Scaffold(
         drawer: Drawer(
+          backgroundColor: Colors.white,
+
           child: ListView(
           padding: EdgeInsets.zero,
 

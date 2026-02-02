@@ -30,6 +30,31 @@ class InvenyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
         scaffoldBackgroundColor: Colors.white,
+
+        popupMenuTheme: const PopupMenuThemeData(
+          color: Colors.white,
+        ),
+
+        menuTheme: const MenuThemeData(
+          style: MenuStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.white),
+          )
+        ),
+
+        canvasColor: Colors.white,
+
+        inputDecorationTheme: const InputDecorationTheme(
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey), 
+        ),
+        // 클릭 후 밑줄 색
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.orange, width: 2.0),
+        ),
+        // 라벨(글자) 색
+        floatingLabelStyle: TextStyle(color: Colors.orange),
+        ),
+
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
@@ -37,9 +62,6 @@ class InvenyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-
-      // home: const LoginScreen(), 
-      // home: const StockListScreen(), 
     );
   }
 }
