@@ -64,7 +64,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     context, MaterialPageRoute(builder: (context) => const RegisterScreen()),
                   );
                 }, 
-                child: const Text('계정이 없으신가요? 회원가입'))
+                child: const Text('계정이 없으신가요? 회원가입',
+                  style: TextStyle(color: Colors.black),)
+              )
             ],
           ),
         ),

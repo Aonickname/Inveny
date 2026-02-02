@@ -19,9 +19,9 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_KEY }}
         script: |
-          sudo pkill -9 -f 'java -jar' || true
 
-          sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+          sudo pkill -9 -f 'java -jar.*Inveny' || true
+          sleep 5
 
     - name: Set up JDK 21 
       uses: actions/setup-java@v4

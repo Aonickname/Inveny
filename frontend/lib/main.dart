@@ -19,7 +19,7 @@ class InvenyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
-      initialRoute: '/stockList',
+      initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginScreen(),
         '/stockList': (context) => const StockListScreen(),
@@ -28,6 +28,23 @@ class InvenyApp extends StatelessWidget {
       title: 'Inveny 재고관리',
 
       theme: ThemeData(
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.orange, 
+          foregroundColor: Colors.white,  
+          minimumSize: const Size(double.infinity, 50), 
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          textStyle: const TextStyle(
+            fontSize: 18,  
+            fontWeight: FontWeight.bold, 
+          ),
+          elevation: 2,
+        ),
+      ),
+
         primarySwatch: Colors.orange,
         scaffoldBackgroundColor: Colors.white,
 
