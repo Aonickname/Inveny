@@ -4,6 +4,7 @@ import '../services/stock_service.dart';
 import '../widgets/stock_card.dart'; 
 import 'stock_detail_screen.dart'; 
 import 'stock_add_screen.dart'; 
+import 'login_screen.dart';
 
 enum SortOption { name, quantityAsc, quantityDesc }
 
@@ -24,6 +25,45 @@ class _StockListScreenState extends State<StockListScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+          padding: EdgeInsets.zero,
+
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.orange),
+              child: Text('Inveny 메뉴', style: TextStyle(color: Colors.white, fontSize: 20)),
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('내 정보'),
+              onTap: () {
+                // 정보 화면 이동 로직
+              },
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.assignment),
+              title: const Text('게시판'),
+              onTap: () {
+                // 게시판 이동 로직
+              },
+            ),
+
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text('로그아웃', style: TextStyle(color: Colors.red)),
+              onTap: () {
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+            )
+          ]
+        ),
+        ),
+
+        // 필터링 버튼
         appBar: AppBar(
           title: const Text('재고 목록 보기'),
           actions: [

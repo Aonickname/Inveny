@@ -18,6 +18,13 @@ class InvenyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      initialRoute: '/stockList',
+      routes: {
+        '/login': (context) => const LoginScreen(),
+        '/stockList': (context) => const StockListScreen(),
+      },
+
       title: 'Inveny 재고관리',
 
       theme: ThemeData(
@@ -31,7 +38,7 @@ class InvenyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: const LoginScreen(), 
+      // home: const LoginScreen(), 
       // home: const StockListScreen(), 
     );
   }
